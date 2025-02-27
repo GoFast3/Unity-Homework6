@@ -15,3 +15,6 @@
 ## יוצרים
 רואי ביטון וטליה פרץ
 
+## קישור למשחק
+ניתן לשחק במשחק כאן: [Homework 6 - Itch.io](https://talya-amd-roei.itch.io/homework6)
+
