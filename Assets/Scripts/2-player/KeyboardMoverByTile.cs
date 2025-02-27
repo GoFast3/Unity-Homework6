@@ -11,6 +11,7 @@ public class KeyboardMoverByTile: KeyboardMover {
 //    [SerializeField] TileBase[] allowedTiles = null;
     [SerializeField] AllowedTiles allowedTiles = null;
 
+
     private TileBase TileOnPosition(Vector3 worldPosition) {
         Vector3Int cellPosition = tilemap.WorldToCell(worldPosition);
         return tilemap.GetTile(cellPosition);
@@ -19,10 +20,12 @@ public class KeyboardMoverByTile: KeyboardMover {
     void Update()  {
         Vector3 newPosition = NewPosition();
         TileBase tileOnNewPosition = TileOnPosition(newPosition);
-        if (allowedTiles.Contains(tileOnNewPosition)) {
+        if (allowedTiles.Contains(tileOnNewPosition) ) {
             transform.position = newPosition;
+
         } else {
             Debug.LogError("You cannot walk on " + tileOnNewPosition + "!");
         }
     }
+    
 }

@@ -10,9 +10,12 @@ public class TilemapGraph: IGraph<Vector3Int> {
     private Tilemap tilemap;
     private TileBase[] allowedTiles;
 
-    public TilemapGraph(Tilemap tilemap, TileBase[] allowedTiles) {
+    private AllowedTiles allTiles;
+
+    public TilemapGraph(Tilemap tilemap, AllowedTiles allTiles) {
         this.tilemap = tilemap;
-        this.allowedTiles = allowedTiles;
+        this.allTiles = allTiles;
+        this.allowedTiles = allTiles.Get();
     }
 
     static Vector3Int[] directions = {
@@ -23,6 +26,7 @@ public class TilemapGraph: IGraph<Vector3Int> {
     };
 
     public IEnumerable<Vector3Int> Neighbors(Vector3Int node) {
+
         foreach (var direction in directions) {
             Vector3Int neighborPos = node + direction;
             TileBase neighborTile = tilemap.GetTile(neighborPos);
@@ -30,4 +34,13 @@ public class TilemapGraph: IGraph<Vector3Int> {
                 yield return neighborPos;
         }
     }
+
+    public float getWeight(Vector3Int node){
+
+        TileBase tileType = tilemap.GetTile(node);
+        float ans = allTiles.tileWeight(tileType);
+        return ans;
+    }
+
+
 }

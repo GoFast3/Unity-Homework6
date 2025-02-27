@@ -25,7 +25,8 @@ public class TargetMover: MonoBehaviour {
     protected bool atTarget;  // This property is set to "true" whenever the object has already found the target.
 
     public void SetTarget(Vector3 newTarget) {
-        if (targetInWorld != newTarget) {
+         TileBase tileType = tilemap.GetTile(tilemap.WorldToCell(newTarget));
+        if (targetInWorld != newTarget && allowedTiles.Contains(tileType)) {
             targetInWorld = newTarget;
             targetInGrid = tilemap.WorldToCell(targetInWorld);
             atTarget = false;
@@ -40,13 +41,19 @@ public class TargetMover: MonoBehaviour {
     private float timeBetweenSteps;
 
     protected virtual void Start() {
-        tilemapGraph = new TilemapGraph(tilemap, allowedTiles.Get());
-        timeBetweenSteps = 1 / speed;
+        tilemapGraph = new TilemapGraph(tilemap, allowedTiles);
+        TileBase tileType = tilemap.GetTile(tilemap.WorldToCell(transform.position));
+
+        float ratio = allowedTiles.tileSpeedRatio(tileType);
+        timeBetweenSteps = 1 / (speed * ratio);
         StartCoroutine(MoveTowardsTheTarget());
     }
 
     IEnumerator MoveTowardsTheTarget() {
         for(;;) {
+            TileBase tileType = tilemap.GetTile(tilemap.WorldToCell(transform.position));
+            float ratio = allowedTiles.tileSpeedRatio(tileType);
+            timeBetweenSteps = 1 / (speed * ratio);
             yield return new WaitForSeconds(timeBetweenSteps);
             if (enabled && !atTarget)
                 MakeOneStepTowardsTheTarget();
@@ -56,7 +63,7 @@ public class TargetMover: MonoBehaviour {
     private void MakeOneStepTowardsTheTarget() {
         Vector3Int startNode = tilemap.WorldToCell(transform.position);
         Vector3Int endNode = targetInGrid;
-        List<Vector3Int> shortestPath = BFS.GetPath(tilemapGraph, startNode, endNode, maxIterations);
+        List<Vector3Int> shortestPath = AStar.GetPath(tilemapGraph, startNode, endNode, maxIterations);
         Debug.Log("shortestPath = " + string.Join(" , ",shortestPath));
         if (shortestPath.Count >= 2) { // shortestPath contains both source and target.
             Vector3Int nextNode = shortestPath[1];

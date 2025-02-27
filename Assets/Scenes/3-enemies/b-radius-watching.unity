@@ -2622,11 +2622,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94aa9c593b15b9248a02a0b984d76a40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allowedTiles:
-  - {fileID: 11400000, guid: 0cea26e1a47ac8d46850becac1a6c757, type: 2}
-  - {fileID: 11400000, guid: 149fb7c95775bc842bc8f54055585274, type: 2}
-  - {fileID: 11400000, guid: 2ad1759387b28444892c8549e6122652, type: 2}
-  - {fileID: 11400000, guid: 8f2cab6dea1a2d147b231cc92eb1f7e2, type: 2}
+  bushes: {fileID: 11400000, guid: 0cea26e1a47ac8d46850becac1a6c757, type: 2}
+  grass: {fileID: 11400000, guid: 149fb7c95775bc842bc8f54055585274, type: 2}
+  hills: {fileID: 11400000, guid: 2ad1759387b28444892c8549e6122652, type: 2}
+  swamp: {fileID: 11400000, guid: 8f2cab6dea1a2d147b231cc92eb1f7e2, type: 2}
+  forest: {fileID: 11400000, guid: f632ced9123ae5c45b90b0717a7e4eae, type: 2}
+  mountains: {fileID: 11400000, guid: 546c35550ead79941af5f505fdd175ec, type: 2}
+  shallow_sea: {fileID: 11400000, guid: fbc7e53732751274190a9ea1250192b4, type: 2}
+  medium_sea: {fileID: 11400000, guid: 0230b48a2cd148149bf5502ca7328478, type: 2}
+  deep_sea: {fileID: 11400000, guid: ea56eece63aba35469fea812356c7a92, type: 2}
+  bushesSpeed: 1.2
+  grassSpeed: 1.4
+  hillsSpeed: 1
+  swampSpeed: 1.6
 --- !u!1 &2052329452
 GameObject:
   m_ObjectHideFlags: 0

@@ -2623,6 +2623,7 @@ GameObject:
   - component: {fileID: 1373858625}
   - component: {fileID: 1373858627}
   - component: {fileID: 1373858624}
+  - component: {fileID: 1373858628}
   m_Layer: 0
   m_Name: Enemy2
   m_TagString: Untagged
@@ -2716,6 +2717,7 @@ MonoBehaviour:
   radiusToWatch: 5
   probabilityToRotate: 0.2
   probabilityToStopRotating: 0.2
+  probabilityToStartWanderer: 0.2
 --- !u!114 &1373858625
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2771,6 +2773,27 @@ MonoBehaviour:
   minAngle: -30
   maxAngle: 30
   angularVelocity: {x: 0, y: 60, z: 0}
+--- !u!114 &1373858628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1373858621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bb7314ac4d83456ebfeb73071ce1581, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tilemap: {fileID: 931517250}
+  allowedTiles: {fileID: 1972678413}
+  speed: 4
+  maxIterations: 1000
+  targetInWorld: {x: 0, y: 0, z: 0}
+  targetInGrid: {x: 0, y: 0, z: 0}
+  maxMovementDistanceX: 8
+  maxMovementDistanceY: 4
+  changeDirectionInterval: 6
 --- !u!1 &1572995961
 GameObject:
   m_ObjectHideFlags: 0
@@ -2877,11 +2900,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94aa9c593b15b9248a02a0b984d76a40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allowedTiles:
-  - {fileID: 11400000, guid: 0cea26e1a47ac8d46850becac1a6c757, type: 2}
-  - {fileID: 11400000, guid: 149fb7c95775bc842bc8f54055585274, type: 2}
-  - {fileID: 11400000, guid: 2ad1759387b28444892c8549e6122652, type: 2}
-  - {fileID: 11400000, guid: 8f2cab6dea1a2d147b231cc92eb1f7e2, type: 2}
+  bushes: {fileID: 11400000, guid: 0cea26e1a47ac8d46850becac1a6c757, type: 2}
+  grass: {fileID: 11400000, guid: 149fb7c95775bc842bc8f54055585274, type: 2}
+  hills: {fileID: 11400000, guid: 2ad1759387b28444892c8549e6122652, type: 2}
+  swamp: {fileID: 11400000, guid: 8f2cab6dea1a2d147b231cc92eb1f7e2, type: 2}
+  forest: {fileID: 11400000, guid: f632ced9123ae5c45b90b0717a7e4eae, type: 2}
+  mountains: {fileID: 11400000, guid: 546c35550ead79941af5f505fdd175ec, type: 2}
+  shallow_sea: {fileID: 11400000, guid: fbc7e53732751274190a9ea1250192b4, type: 2}
+  medium_sea: {fileID: 11400000, guid: 0230b48a2cd148149bf5502ca7328478, type: 2}
+  deep_sea: {fileID: 11400000, guid: ea56eece63aba35469fea812356c7a92, type: 2}
+  bushesSpeed: 1.2
+  grassSpeed: 1.4
+  hillsSpeed: 1
+  swampSpeed: 1.6
 --- !u!1 &2052329452
 GameObject:
   m_ObjectHideFlags: 0
